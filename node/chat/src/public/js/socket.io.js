@@ -70,12 +70,17 @@ socket.on("leave", (nickname) => {
 });
 
 socket.on("public_rooms", (publicRoomList) => {
+    const ul = publicRooms.querySelector("ul");
+    ul.innerHTML = "";
+
     publicRoomList.forEach(publicRoom => {
-        const ul = publicRooms.querySelector("ul");
         const li = document.createElement("li");
 
         li.innerText = publicRoom;
-        ul.remove();
         ul.append(li);
     });
+});
+
+socket.on("userCount", (userCount) => {
+    
 });
